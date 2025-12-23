@@ -1,0 +1,46 @@
+{
+  "name": "@snowy/sdk",
+  "version": "0.1.0",
+  "description": "Solana-native LLM inference SDK for SNOWY using wallet signatures (no API keys).",
+  "license": "MIT",
+  "keywords": [
+    "solana",
+    "sdk",
+    "llm",
+    "ai",
+    "wallet",
+    "signature",
+    "snowy"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap --clean",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "dependencies": {
+    "bs58": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.6.3"
+  }
+}
